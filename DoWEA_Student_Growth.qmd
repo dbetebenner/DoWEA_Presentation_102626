@@ -443,7 +443,7 @@ This is the question DoWEA leadership is already asking. You are not bringing th
 
 NAEP does not follow the same students from Grade 4 to Grade 8. It takes two snapshots of different samples from the same cohort — here, Grade 4 in 2015 and Grade 8 in 2019, mathematics.
 
-Recent work with Henry Braun estimates **cohort growth** from those two snapshots. It borrows the link between Grade 4 and Grade 8 scores from states that do follow individual students.
+Recent work with Professor Henry Braun estimates **cohort growth** from those two snapshots. It borrows the link between Grade 4 and Grade 8 scores from states that do follow individual students.
 
 The result is a **mean SGPc**: the average growth percentile of a jurisdiction's students against **national academic peers**.
 
@@ -654,7 +654,7 @@ National Center for the Improvement of Educational Assessment
 
 These slides: [dbetebenner.github.io/DoWEA_Presentation_102626](https://dbetebenner.github.io/DoWEA_Presentation_102626/)
 
-NAEP growth work with **Henry I. Braun**, Lynch School of Education, Boston College.
+NAEP growth work with **Professor Henry I. Braun**, Lynch School of Education, Boston College.
 
 :::
 ::: {.column width="40%"}
