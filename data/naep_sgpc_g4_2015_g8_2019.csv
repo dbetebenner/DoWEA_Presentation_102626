@@ -1,0 +1,54 @@
+rank,jurisdiction,mean_sgpc,se,ci95_lo,ci95_hi,outer_lo,outer_hi,rank_lo,rank_hi,bucket,d,source
+1,J01,58.7,1.78,55.2,62.2,47.9,69.8,1,2,very high,0.31,NAEP_Copula_Analyses/index.qmd appendix
+2,J02,57.7,1.64,54.5,60.9,47.4,68.7,1,5,very high,0.27,NAEP_Copula_Analyses/index.qmd appendix
+3,J03,55.5,2.03,51.5,59.5,45.8,65.8,2,10,very high,0.2,NAEP_Copula_Analyses/index.qmd appendix
+4,J04,55.5,1.97,51.6,59.3,46.1,65.6,2,10,very high,0.2,NAEP_Copula_Analyses/index.qmd appendix
+5,J05,55.4,2.03,51.4,59.3,45.6,65.7,2,10,very high,0.19,NAEP_Copula_Analyses/index.qmd appendix
+6,J06,54.9,2.2,50.6,59.2,44.1,65.8,3,15,very high,0.18,NAEP_Copula_Analyses/index.qmd appendix
+7,DoDEA,54.1,1.5,51.2,57.1,45.1,63.1,3,15,very high,0.15,NAEP_Copula_Analyses/index.qmd appendix
+8,J07,54,2.14,49.8,58.2,43.4,64.3,3,21,very high,0.14,NAEP_Copula_Analyses/index.qmd appendix
+9,J08,53.5,1.51,50.6,56.5,44.9,62.3,5,15,very high,0.13,NAEP_Copula_Analyses/index.qmd appendix
+10,J09,53.3,1.95,49.5,57.2,43.8,63.1,3,18,high,0.12,NAEP_Copula_Analyses/index.qmd appendix
+11,J10,52.8,1.95,49,56.7,43.7,62.2,6,22,high,0.1,NAEP_Copula_Analyses/index.qmd appendix
+12,J11,52.8,1.34,50.1,55.4,42.5,63.1,5,25,very high,0.1,NAEP_Copula_Analyses/index.qmd appendix
+13,J12,52.5,1.63,49.3,55.7,44.1,61.7,6,24,high,0.09,NAEP_Copula_Analyses/index.qmd appendix
+14,J13,52.4,1.94,48.6,56.2,42.7,62.5,6,26,high,0.09,NAEP_Copula_Analyses/index.qmd appendix
+15,J14,52.3,1.84,48.6,55.9,42.9,61.6,7,30,high,0.08,NAEP_Copula_Analyses/index.qmd appendix
+16,J15,51.8,1.56,48.8,54.9,43.4,60.1,10,26,high,0.07,NAEP_Copula_Analyses/index.qmd appendix
+17,J16,51.4,1.93,47.6,55.2,42.2,60.3,10,30,typical,0.05,NAEP_Copula_Analyses/index.qmd appendix
+18,J17,51.2,2.28,46.7,55.6,39.2,63.1,7,38,typical,0.04,NAEP_Copula_Analyses/index.qmd appendix
+19,J18,51,1.6,47.9,54.2,42.5,59.5,11,30,typical,0.04,NAEP_Copula_Analyses/index.qmd appendix
+20,J19,50.9,2.23,46.6,55.3,41.4,60.5,10,34,typical,0.03,NAEP_Copula_Analyses/index.qmd appendix
+21,J20,50.8,1.99,46.9,54.7,41.8,59.5,11,33,typical,0.03,NAEP_Copula_Analyses/index.qmd appendix
+22,J21,50.8,1.65,47.6,54,42.4,59.2,13,32,typical,0.03,NAEP_Copula_Analyses/index.qmd appendix
+23,J22,50.7,2.19,46.4,55,41.5,60.1,10,34,typical,0.03,NAEP_Copula_Analyses/index.qmd appendix
+24,J23,50.5,2.2,46.2,54.9,38.5,62.6,7,43,typical,0.02,NAEP_Copula_Analyses/index.qmd appendix
+25,J24,50.5,2.31,45.9,55,36.8,63.1,8,47,typical,0.02,NAEP_Copula_Analyses/index.qmd appendix
+26,Nation,50,0,50,50,50,50,,,Nation,0,Arithmetic identity; national-equivalent percentiles
+27,J25,49.9,1.78,46.4,53.4,40.4,58.9,13,40,typical,0,NAEP_Copula_Analyses/index.qmd appendix
+28,J26,49.6,1.6,46.5,52.8,40.3,59,16,38,typical,-0.01,NAEP_Copula_Analyses/index.qmd appendix
+29,J27,49.3,1.68,46,52.6,40.9,57.9,18,38,typical,-0.02,NAEP_Copula_Analyses/index.qmd appendix
+30,J28,49.3,2.09,45.2,53.4,39.7,58.7,15,42,typical,-0.02,NAEP_Copula_Analyses/index.qmd appendix
+31,J29,49,1.89,45.3,52.7,40.1,58,19,43,typical,-0.03,NAEP_Copula_Analyses/index.qmd appendix
+32,J30,48.7,1.69,45.4,52,39.9,57.4,20,44,typical,-0.05,NAEP_Copula_Analyses/index.qmd appendix
+33,J31,48.6,1.49,45.6,51.5,38.7,59.1,17,45,typical,-0.05,NAEP_Copula_Analyses/index.qmd appendix
+34,J32,48.6,1.63,45.3,51.8,40,57,24,44,typical,-0.05,NAEP_Copula_Analyses/index.qmd appendix
+35,J33,48.4,1.66,45.2,51.7,39.5,56.8,25,45,typical,-0.06,NAEP_Copula_Analyses/index.qmd appendix
+36,J34,48.4,1.78,44.9,51.9,39.9,56.9,25,45,typical,-0.06,NAEP_Copula_Analyses/index.qmd appendix
+37,J35,47.9,2.02,43.9,51.8,38.6,57.1,26,48,typical,-0.08,NAEP_Copula_Analyses/index.qmd appendix
+38,J36,47.8,2.53,42.8,52.7,37.8,57.7,26,49,typical,-0.08,NAEP_Copula_Analyses/index.qmd appendix
+39,J37,47.3,1.52,44.3,50.3,39,55.4,32,48,typical,-0.1,NAEP_Copula_Analyses/index.qmd appendix
+40,J38,47.2,1.36,44.5,49.8,39,55.4,33,48,typical,-0.1,NAEP_Copula_Analyses/index.qmd appendix
+41,J39,47,2.1,42.8,51.1,37.4,56.7,29,52,typical,-0.11,NAEP_Copula_Analyses/index.qmd appendix
+42,J40,46.9,1.47,44.1,49.8,38.1,56.4,30,49,typical,-0.11,NAEP_Copula_Analyses/index.qmd appendix
+43,J41,46.9,1.85,43.3,50.5,37,58.9,22,51,typical,-0.11,NAEP_Copula_Analyses/index.qmd appendix
+44,J42,46.8,2.21,42.5,51.1,36.9,56.7,29,52,typical,-0.11,NAEP_Copula_Analyses/index.qmd appendix
+45,J43,46.7,1.96,42.8,50.5,36.9,56.3,31,51,typical,-0.12,NAEP_Copula_Analyses/index.qmd appendix
+46,J44,46.1,1.62,42.9,49.3,36.9,55,37,52,typical,-0.14,NAEP_Copula_Analyses/index.qmd appendix
+47,J45,46,1.58,42.9,49.1,37.3,54.7,37,52,typical,-0.14,NAEP_Copula_Analyses/index.qmd appendix
+48,J46,45.8,1.72,42.5,49.2,36.4,54.7,39,52,typical,-0.15,NAEP_Copula_Analyses/index.qmd appendix
+49,J47,45.4,1.37,42.7,48.1,36.9,53.9,41,53,low,-0.16,NAEP_Copula_Analyses/index.qmd appendix
+50,J48,45,1.99,41.1,48.9,34.9,54.6,41,53,low,-0.18,NAEP_Copula_Analyses/index.qmd appendix
+51,J49,44.9,1.9,41.2,48.7,35.1,54.5,41,53,low,-0.18,NAEP_Copula_Analyses/index.qmd appendix
+52,J50,44.4,1.78,40.9,47.9,32.7,55.3,42,53,low,-0.2,NAEP_Copula_Analyses/index.qmd appendix
+53,J51,42.7,2.17,38.5,46.9,28.1,58.1,39,53,low,-0.26,NAEP_Copula_Analyses/index.qmd appendix

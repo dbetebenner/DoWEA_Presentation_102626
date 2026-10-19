@@ -1,0 +1,25 @@
+subject,grade,year,jurisdiction,scale_score,diff_from_np,pct_basic,pct_proficient,pct_advanced,source_url,source_note
+Reading,4,2024,DoDEA,234,20,79,48,15,https://nces.ed.gov/nationsreportcard/,DoWEA / DoDEA press release and NAEP 2024 Reading snapshot; national-public difference +20
+Reading,4,2024,National public,214,0,59,30,NA,https://nces.ed.gov/nationsreportcard/,Implied by DoDEA 234 and reported +20 difference; proficient 30 percent
+Reading,4,2022,DoDEA,235,19,80,50,16,https://nces.ed.gov/nationsreportcard/,DoDEA 2024 reading historical table
+Reading,4,2019,DoDEA,235,16,83,49,12,https://nces.ed.gov/nationsreportcard/,DoDEA 2024 reading historical table
+Reading,4,2017,DoDEA,234,13,84,48,11,https://nces.ed.gov/nationsreportcard/,DoDEA 2024 reading historical table
+Reading,4,1998,DoDEA,220,NA,66,32,NA,https://nces.ed.gov/nationsreportcard/,First DoDEA reading participation
+Reading,8,2024,DoDEA,282,25,90,53,8,https://nces.ed.gov/nationsreportcard/,DoWEA / DoDEA press release; national-public difference +25
+Reading,8,2024,National public,257,0,66,29,NA,https://nces.ed.gov/nationsreportcard/,Implied by DoDEA 282 and reported +25 difference; proficient 29 percent
+Reading,8,2022,DoDEA,282,23,90,55,7,https://nces.ed.gov/nationsreportcard/,DoDEA 2024 reading historical table
+Reading,8,2019,DoDEA,280,18,91,52,5,https://nces.ed.gov/nationsreportcard/,DoDEA 2024 reading historical table
+Reading,8,2017,DoDEA,280,15,91,51,5,https://nces.ed.gov/nationsreportcard/,DoDEA 2024 reading historical table
+Reading,8,1998,DoDEA,269,NA,79,37,NA,https://nces.ed.gov/nationsreportcard/,First DoDEA reading participation
+Mathematics,4,2024,DoDEA,251,14,91,54,11,https://nces.ed.gov/nationsreportcard/subject/publications/stt2024/pdf/2024219DS4.pdf,NCES 2024 Mathematics Snapshot Report for DoDEA Grade 4
+Mathematics,4,2024,National public,237,0,76,39,NA,https://nces.ed.gov/nationsreportcard/subject/publications/stt2024/pdf/2024219DS4.pdf,NCES snapshot: nation 237; proficient 39 percent
+Mathematics,4,2022,DoDEA,250,15,92,51,10,https://nces.ed.gov/nationsreportcard/,DoDEA 2024 mathematics historical table
+Mathematics,4,2019,DoDEA,250,10,92,54,9,https://nces.ed.gov/nationsreportcard/,DoDEA 2024 mathematics historical table
+Mathematics,4,2017,DoDEA,249,10,91,51,9,https://nces.ed.gov/nationsreportcard/,DoDEA 2024 mathematics historical table
+Mathematics,4,2000,DoDEA,227,NA,69,21,NA,https://nces.ed.gov/nationsreportcard/subject/publications/stt2024/pdf/2024219DS4.pdf,NCES snapshot historical comparison
+Mathematics,8,2024,DoDEA,291,19,81,41,11,https://www.dodea.edu/news/press-releases/dod-schools-ranked-best-united-states-again-nations-report-card,DoWEA press release; national public 272
+Mathematics,8,2024,National public,272,0,59,27,NA,https://www.dodea.edu/news/press-releases/dod-schools-ranked-best-united-states-again-nations-report-card,Nation public 272; proficient 27 percent
+Mathematics,8,2022,DoDEA,292,19,82,41,11,https://nces.ed.gov/nationsreportcard/,DoDEA 2024 mathematics historical table
+Mathematics,8,2019,DoDEA,292,11,83,41,11,https://nces.ed.gov/nationsreportcard/,DoDEA 2024 mathematics historical table
+Mathematics,8,2017,DoDEA,293,11,83,42,11,https://nces.ed.gov/nationsreportcard/,DoDEA 2024 mathematics historical table
+Mathematics,8,1996,DoDEA,274,NA,64,22,NA,https://nces.ed.gov/nationsreportcard/,DoDEA historical comparison
