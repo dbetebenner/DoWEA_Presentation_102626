@@ -51,7 +51,6 @@ latest <- pairs[YEAR == max(YEAR)]
 
 school <- latest[, .(
   n            = .N,
-  median_sgp   = median(SGP, na.rm = TRUE),
   mean_sgp     = mean(SGP, na.rm = TRUE),
   pct_proficient = 100 * mean(PROF, na.rm = TRUE)
 ), by = .(REGION, DISTRICT_LABEL, SCHOOL_LABEL, SCHOOL_NUMBER)]
@@ -59,13 +58,13 @@ school <- school[n >= 40]
 
 district <- latest[, .(
   n = .N,
-  median_sgp = median(SGP, na.rm = TRUE),
+  mean_sgp = mean(SGP, na.rm = TRUE),
   pct_proficient = 100 * mean(PROF, na.rm = TRUE)
 ), by = .(REGION, DISTRICT_LABEL)]
 
 region <- latest[, .(
   n = .N,
-  median_sgp = median(SGP, na.rm = TRUE),
+  mean_sgp = mean(SGP, na.rm = TRUE),
   pct_proficient = 100 * mean(PROF, na.rm = TRUE)
 ), by = REGION]
 
@@ -75,12 +74,12 @@ cand <- school[, {
   .SD[abs(pct_proficient - median(pct_proficient)) < 4]
 }]
 if (nrow(cand) < 8) cand <- copy(school)
-spread <- cand[order(-median_sgp)]
+spread <- cand[order(-mean_sgp)]
 pair_hi <- spread[1]
 pair_lo <- spread[.N]
 pair_dt <- rbindlist(list(
-  pair_hi[, .(SCHOOL_LABEL, REGION, median_sgp, pct_proficient, role = "Higher growth")],
-  pair_lo[, .(SCHOOL_LABEL, REGION, median_sgp, pct_proficient, role = "Lower growth")]
+  pair_hi[, .(SCHOOL_LABEL, REGION, mean_sgp, pct_proficient, role = "Higher growth")],
+  pair_lo[, .(SCHOOL_LABEL, REGION, mean_sgp, pct_proficient, role = "Lower growth")]
 ))
 
 saveRDS(list(
@@ -92,12 +91,12 @@ saveRDS(list(
 pair_dt[, school := fifelse(role == "Higher growth", "School B", "School A")]
 pair_long <- melt(pair_dt,
                   id.vars = c("school", "REGION", "role"),
-                  measure.vars = c("pct_proficient", "median_sgp"),
+                  measure.vars = c("pct_proficient", "mean_sgp"),
                   variable.name = "metric", value.name = "value")
-pair_long[, metric := factor(fifelse(metric == "median_sgp",
-                                     "Median growth percentile",
+pair_long[, metric := factor(fifelse(metric == "mean_sgp",
+                                     "Mean growth percentile (SGP)",
                                      "Percent proficient"),
-                             levels = c("Percent proficient", "Median growth percentile"))]
+                             levels = c("Percent proficient", "Mean growth percentile (SGP)"))]
 p_pair <- ggplot(pair_long, aes(x = school, y = value, fill = role)) +
   geom_col(width = 0.62) +
   geom_text(aes(label = round(value)), vjust = -0.4, size = 7, fontface = "bold") +
@@ -116,7 +115,7 @@ p_pair <- ggplot(pair_long, aes(x = school, y = value, fill = role)) +
 save_svg(p_pair, "Figures/process/two_schools.svg", 12, 6)
 
 ## ── School bubble: status × growth, color = region ──────────────
-p_bubble <- ggplot(school, aes(x = pct_proficient, y = median_sgp,
+p_bubble <- ggplot(school, aes(x = pct_proficient, y = mean_sgp,
                                colour = REGION, size = n)) +
   geom_hline(yintercept = 50, colour = GREY, linetype = "22") +
   geom_vline(xintercept = median(school$pct_proficient),
@@ -125,7 +124,7 @@ p_bubble <- ggplot(school, aes(x = pct_proficient, y = median_sgp,
   scale_colour_manual(values = REGION_COLS) +
   scale_size_area(max_size = 14, guide = "none") +
   guides(colour = guide_legend(override.aes = list(size = 6))) +
-  labs(x = "Percent proficient", y = "Median growth percentile",
+  labs(x = "Percent proficient", y = "Mean growth percentile (SGP)",
        subtitle = "Each bubble is a school. Color is region; size is the number of students.",
        caption = "Illustrative data. Dashed lines mark median proficiency and typical growth (50).") +
   theme_deck(16) +
@@ -134,20 +133,21 @@ p_bubble <- ggplot(school, aes(x = pct_proficient, y = median_sgp,
 save_svg(p_bubble, "Figures/process/school_bubbles.svg", 12, 6)
 
 ## ── Region → district drill-down (one figure) ───────────────────
-region_lab <- region[, .(REGION, strip = sprintf("%s\nmedian %d", REGION, round(median_sgp)))]
+region_lab <- region[, .(REGION, strip = sprintf("%s\nmean %d", REGION, round(mean_sgp)))]
 district <- merge(district, region_lab, by = "REGION")
-district[, strip := factor(strip, levels = region_lab[order(-region$median_sgp)]$strip)]
+district[, strip := factor(strip, levels = region_lab[order(-region$mean_sgp)]$strip)]
 district[, short := sub(".* · ", "", DISTRICT_LABEL)]
+district[, short := factor(short, levels = rev(sort(unique(short))))]
 
-p_drill <- ggplot(district, aes(x = median_sgp, y = reorder(short, median_sgp), fill = REGION)) +
+p_drill <- ggplot(district, aes(x = mean_sgp, y = short, fill = REGION)) +
   geom_col(width = 0.68) +
   geom_vline(xintercept = 50, colour = INK, linetype = "22") +
-  geom_text(aes(label = round(median_sgp)), hjust = -0.25, size = 6, fontface = "bold") +
+  geom_text(aes(label = round(mean_sgp)), hjust = -0.25, size = 6, fontface = "bold") +
   facet_grid(strip ~ ., scales = "free_y", space = "free_y", switch = "y") +
   scale_fill_manual(values = REGION_COLS, guide = "none") +
   scale_x_continuous(limits = c(0, 70), breaks = seq(0, 70, 10),
                      expand = expansion(mult = c(0, 0.02))) +
-  labs(x = "Median growth percentile", y = NULL,
+  labs(x = "Mean growth percentile (SGP)", y = NULL,
        subtitle = "Start with the region, then its districts. Dashed line: typical growth (50).",
        caption = "Illustrative data. Not DoWEA results.") +
   theme_deck(17) +
@@ -172,18 +172,18 @@ latest[, prior_band := cut(prior_score, breaks = quantile(prior_score, c(0, 1/3,
                            include.lowest = TRUE,
                            labels = c("Started lower", "Started in the middle", "Started higher"))]
 by_prior <- latest[!is.na(prior_band), .(
-  median_sgp = median(SGP),
+  mean_sgp = mean(SGP),
   n = .N
 ), by = .(REGION, prior_band)]
 
-p_prior <- ggplot(by_prior, aes(x = prior_band, y = median_sgp, fill = REGION)) +
+p_prior <- ggplot(by_prior, aes(x = prior_band, y = mean_sgp, fill = REGION)) +
   geom_hline(yintercept = 50, colour = INK, linetype = "22") +
   geom_col(position = position_dodge(0.76), width = 0.72) +
-  geom_text(aes(label = round(median_sgp)), position = position_dodge(0.76),
+  geom_text(aes(label = round(mean_sgp)), position = position_dodge(0.76),
             vjust = -0.4, size = 5.4, fontface = "bold") +
   scale_fill_manual(values = REGION_COLS) +
   scale_y_continuous(limits = c(0, 66), breaks = seq(0, 60, 20)) +
-  labs(x = NULL, y = "Median growth percentile",
+  labs(x = NULL, y = "Mean growth percentile (SGP)",
        caption = "Illustrative data. Students grouped by prior achievement. Dashed line: typical growth (50).") +
   theme_deck(17) +
   theme(panel.grid.major.x = element_blank(),
@@ -193,10 +193,10 @@ p_prior <- ggplot(by_prior, aes(x = prior_band, y = median_sgp, fill = REGION)) 
 
 save_svg(p_prior, "Figures/process/growth_by_prior.svg", 12, 4.6)
 
-## ── Median SGP over time as a light control chart ───────────────
-trend <- pairs[, .(median_sgp = median(SGP), n = .N), by = .(YEAR, REGION)]
+## ── Mean SGP over time as a light control chart ─────────────────
+trend <- pairs[, .(mean_sgp = mean(SGP), n = .N), by = .(YEAR, REGION)]
 trend[, year_lab := gsub("_", "–", YEAR)]
-p_ctrl <- ggplot(trend, aes(x = year_lab, y = median_sgp,
+p_ctrl <- ggplot(trend, aes(x = year_lab, y = mean_sgp,
                             colour = REGION, group = REGION)) +
   annotate("rect", xmin = -Inf, xmax = Inf, ymin = 45, ymax = 55,
            fill = "#3498DB", alpha = 0.12) +
@@ -208,7 +208,7 @@ p_ctrl <- ggplot(trend, aes(x = year_lab, y = median_sgp,
   scale_colour_manual(values = REGION_COLS) +
   scale_y_continuous(limits = c(35, 62)) +
   guides(colour = guide_legend(override.aes = list(linewidth = 2))) +
-  labs(x = NULL, y = "Median growth percentile",
+  labs(x = NULL, y = "Mean growth percentile (SGP)",
        subtitle = "One year is weather; a run of years is climate. Persistent departure from 50 is a signal.",
        caption = "Illustrative data. Shaded band is a conventional 45–55 'typical' window, not a statistical limit.") +
   theme_deck(16) +

@@ -557,7 +557,7 @@ Section: process management
 Illustrative data — not DoWEA results
 :::
 
-![](Figures/process/two_schools.svg){.r-stretch fig-alt="Two schools with similar proficiency rates and very different median growth percentiles."}
+![](Figures/process/two_schools.svg){.r-stretch fig-alt="Two schools with similar proficiency rates and very different mean growth percentiles (SGP)."}
 
 ::: {.notes}
 Say "illustrative" immediately. Public demo data, relabeled. The move is conceptual: two schools a status system cannot tell apart. Growth can. That is why growth belongs in the Tuesday meeting, not only in the June report.
@@ -570,7 +570,7 @@ Say "illustrative" immediately. Public demo data, relabeled. The move is concept
 Illustrative data — not DoWEA results
 :::
 
-![](Figures/process/school_bubbles.svg){.r-stretch fig-alt="School-level bubble chart of percent proficient versus median growth percentile, colored by region."}
+![](Figures/process/school_bubbles.svg){.r-stretch fig-alt="School-level bubble chart of percent proficient versus mean growth percentile (SGP), colored by region."}
 
 ::: {.notes}
 Each bubble is a school. Color is region; the regions are lettered on purpose so no one reads a real DoWEA region into demo data. Look for clusters above and below 50. That is where a leader spends time.
@@ -583,7 +583,7 @@ Each bubble is a school. Color is region; the regions are lettered on purpose so
 Illustrative data — not DoWEA results
 :::
 
-![](Figures/process/region_district.svg){.r-stretch fig-alt="Median growth percentile for districts grouped by region, with each region's median shown beside its group."}
+![](Figures/process/region_district.svg){.r-stretch fig-alt="Mean growth percentile (SGP) for districts grouped by region, with each region's mean shown beside its group."}
 
 ::: {.notes}
 Do not start at the school. Start at the region, then the district or installation, then the school. The point is a drill-down habit, not these particular bars.
@@ -596,7 +596,7 @@ Do not start at the school. Start at the region, then the district or installati
 Illustrative data — not DoWEA results
 :::
 
-![](Figures/process/growth_by_prior.svg){.r-stretch fig-alt="Median growth percentile by prior-achievement band and region."}
+![](Figures/process/growth_by_prior.svg){.r-stretch fig-alt="Mean growth percentile (SGP) by prior-achievement band and region."}
 
 ::: {.key-insight}
 Status can look excellent while students who already sit high are coasting — or while students who sit low are not catching up.
@@ -613,7 +613,7 @@ For a high-achieving system this is the diagnostic question, and the slide that 
 Illustrative data — not DoWEA results
 :::
 
-![](Figures/process/control_chart.svg){.r-stretch fig-alt="Median growth percentile over years by region, with a typical 45 to 55 band."}
+![](Figures/process/control_chart.svg){.r-stretch fig-alt="Mean growth percentile (SGP) over years by region, with a typical 45 to 55 band."}
 
 ::: {.notes}
 Statistical process control, in plain language. One year is weather. A run of years is climate. Persistent departure from 50 is a signal worth a visit, not a verdict.

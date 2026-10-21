@@ -59,10 +59,10 @@
 <polyline points='468.75,221.73 855.53,221.73 ' style='stroke-width: 0.85; stroke: #D8D8D4; stroke-linecap: butt;' />
 <polyline points='468.75,148.41 855.53,148.41 ' style='stroke-width: 0.85; stroke: #D8D8D4; stroke-linecap: butt;' />
 <polyline points='468.75,75.09 855.53,75.09 ' style='stroke-width: 0.85; stroke: #D8D8D4; stroke-linecap: butt;' />
-<rect x='695.55' y='187.74' width='109.00' height='180.63' style='stroke-width: 1.65; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #27AE60;' />
-<rect x='519.74' y='278.91' width='109.00' height='89.46' style='stroke-width: 1.65; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #E67E22;' />
-<text x='750.05' y='182.04' text-anchor='middle' style='font-size: 19.92px; font-weight: bold; font-family: "Arial";' textLength='22.16px' lengthAdjust='spacingAndGlyphs'>62</text>
-<text x='574.24' y='273.21' text-anchor='middle' style='font-size: 19.92px; font-weight: bold; font-family: "Arial";' textLength='22.16px' lengthAdjust='spacingAndGlyphs'>31</text>
+<rect x='695.55' y='195.93' width='109.00' height='172.44' style='stroke-width: 1.65; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #27AE60;' />
+<rect x='519.74' y='261.74' width='109.00' height='106.63' style='stroke-width: 1.65; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #E67E22;' />
+<text x='750.05' y='190.23' text-anchor='middle' style='font-size: 19.92px; font-weight: bold; font-family: "Arial";' textLength='22.16px' lengthAdjust='spacingAndGlyphs'>59</text>
+<text x='574.24' y='256.04' text-anchor='middle' style='font-size: 19.92px; font-weight: bold; font-family: "Arial";' textLength='22.16px' lengthAdjust='spacingAndGlyphs'>36</text>
 </g>
 <g clip-path='url(#cpMC4wMHw4NjQuMDB8MC4wMHw0MzIuMDA=)'>
 </g>
@@ -82,7 +82,7 @@
   </clipPath>
 </defs>
 <g clip-path='url(#cpNDY4Ljc1fDg1NS41M3wzMS4xMnw2MC40Mg==)'>
-<text x='662.14' y='51.86' text-anchor='middle' style='font-size: 17.00px; font-weight: bold;fill: #1A1A1A; font-family: "Arial";' textLength='204.95px' lengthAdjust='spacingAndGlyphs'>Median growth percentile</text>
+<text x='662.14' y='51.86' text-anchor='middle' style='font-size: 17.00px; font-weight: bold;fill: #1A1A1A; font-family: "Arial";' textLength='241.78px' lengthAdjust='spacingAndGlyphs'>Mean growth percentile (SGP)</text>
 </g>
 <g clip-path='url(#cpMC4wMHw4NjQuMDB8MC4wMHw0MzIuMDA=)'>
 <text x='144.26' y='400.39' text-anchor='middle' style='font-size: 13.60px;fill: #141410; font-family: "Arial";' textLength='53.66px' lengthAdjust='spacingAndGlyphs'>School A</text>
