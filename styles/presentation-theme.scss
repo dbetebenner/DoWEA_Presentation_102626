@@ -791,8 +791,8 @@ $presentation-heading-font-weight: 600;
 
 .ladder {
   display: grid;
-  gap: 0.6em;
-  margin: 0.6em 0 0.9em;
+  gap: 0.5em;
+  margin: 0.5em 0 0.8em;
 }
 
 .ladder-rung {
@@ -800,7 +800,7 @@ $presentation-heading-font-weight: 600;
   grid-template-columns: 12em 1fr;
   gap: 1em;
   align-items: center;
-  padding: 0.8em 1em;
+  padding: 0.6em 1em;
   border-radius: 8px;
   background: rgba(255, 255, 255, 0.35);
   border: 1px solid var(--color-border);
@@ -808,9 +808,10 @@ $presentation-heading-font-weight: 600;
 }
 
 // Border carries the hue; titles use a darker ink of it for AA contrast.
-.ladder-rung.rung-1 { --rung-color: #95a5a6; --rung-ink: #4d5656; margin-right: 8%; }
-.ladder-rung.rung-2 { --rung-color: #5dade2; --rung-ink: #1f618d; margin-left: 4%; margin-right: 4%; }
-.ladder-rung.rung-3 { --rung-color: #1a5276; --rung-ink: #1a5276; margin-left: 8%; }
+.ladder-rung.rung-1 { --rung-color: #95a5a6; --rung-ink: #4d5656; margin-right: 9%; }
+.ladder-rung.rung-2 { --rung-color: #5dade2; --rung-ink: #1f618d; margin-left: 3%; margin-right: 6%; }
+.ladder-rung.rung-3 { --rung-color: #1a5276; --rung-ink: #1a5276; margin-left: 6%; margin-right: 3%; }
+.ladder-rung.rung-4 { --rung-color: #0e6655; --rung-ink: #0e6655; margin-left: 9%; }
 
 .ladder-rung .rung-title p {
   font-family: "Josefin Sans", system-ui, sans-serif;

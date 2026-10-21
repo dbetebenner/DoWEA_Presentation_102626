@@ -1,8 +1,9 @@
 ############################################################################
-### NAEP copula growth (SGPc) figures. DoWEA highlighted.
-### Transcribed from the IES deck appendix; SGPc-foundry is never read.
-### Jurisdictions other than DoWEA and the nation are anonymized (J01–J52)
-### in the committed CSVs and are never labeled in a figure.
+### Copula growth (SGPc) figures.
+### NAEP: DoWEA highlighted, transcribed from the IES deck appendix.
+### TIMSS: the United States highlighted, from the SGPc TIMSS app extract
+### (R/00_extract_timss.R). SGPc-foundry is never read. Every other
+### jurisdiction is coded in the committed CSVs and never labeled.
 ############################################################################
 
 source("R/00_helpers.R")
@@ -21,39 +22,68 @@ sg[, highlight := fcase(
   default = "Other"
 )]
 
-plot_dt <- sg[jurisdiction != "Nation"]
-plot_dt[, rank := frank(-mean_sgpc, ties.method = "min")]
-dowea <- plot_dt[highlight == "DoWEA"]
-dowea_lab <- sprintf("%s  %.1f · rank %d of %d", SHOW_NAME, dowea$mean_sgpc,
-                     dowea$rank, nrow(plot_dt))
+## One row per jurisdiction, only the focus row labeled. `dt` needs
+## jurisdiction, mean_sgpc, ci95_lo, ci95_hi and a logical `focus` column.
+sgpc_dots <- function(dt, focus_lab, ref_lab, limits, breaks, subtitle, caption) {
+  dt <- copy(dt)
+  dt[, highlight := fifelse(focus, "Focus", "Other")]
+  f <- dt[focus == TRUE]
+  ggplot(dt, aes(x = mean_sgpc, y = reorder(jurisdiction, mean_sgpc))) +
+    geom_vline(xintercept = 50, colour = INK, linewidth = 0.7, linetype = "22") +
+    annotate("text", x = 50, y = -Inf, label = ref_lab, vjust = -0.6,
+             hjust = -0.08, colour = INK, size = 5.2) +
+    geom_errorbar(aes(xmin = ci95_lo, xmax = ci95_hi, colour = highlight),
+                  orientation = "y", width = 0, linewidth = 0.8, alpha = 0.8) +
+    geom_point(aes(colour = highlight, size = highlight)) +
+    annotate("text", x = f$ci95_hi, y = f$jurisdiction, label = focus_lab,
+             hjust = -0.06, colour = HIGHLIGHT, fontface = "bold", size = 6) +
+    scale_colour_manual(values = c(Focus = BLUE, Other = "#B6B6B0"), guide = "none") +
+    scale_size_manual(values = c(Focus = 4.6, Other = 2), guide = "none") +
+    scale_x_continuous(limits = limits, breaks = breaks,
+                       name = "Mean SGPc, Grade 4 (2015) → Grade 8 (2019) mathematics") +
+    labs(y = NULL, subtitle = subtitle, caption = caption) +
+    theme_deck(16) +
+    theme(
+      axis.text.y = element_blank(),
+      axis.ticks.y = element_blank(),
+      panel.grid.major.y = element_blank()
+    )
+}
 
-p_dots <- ggplot(plot_dt, aes(x = mean_sgpc, y = reorder(jurisdiction, mean_sgpc))) +
-  geom_vline(xintercept = 50, colour = INK, linewidth = 0.7, linetype = "22") +
-  annotate("text", x = 50, y = -Inf, label = "Nation = 50", vjust = -0.6,
-           hjust = -0.08, colour = INK, size = 5.2) +
-  geom_errorbar(aes(xmin = ci95_lo, xmax = ci95_hi, colour = highlight),
-                orientation = "y", width = 0, linewidth = 0.8, alpha = 0.8) +
-  geom_point(aes(colour = highlight, size = highlight)) +
-  annotate("text", x = dowea$ci95_hi, y = dowea$jurisdiction, label = dowea_lab,
-           hjust = -0.06, colour = HIGHLIGHT, fontface = "bold", size = 6) +
-  scale_colour_manual(values = c(DoWEA = BLUE, Other = "#B6B6B0", Nation = INK),
-                      guide = "none") +
-  scale_size_manual(values = c(DoWEA = 4.6, Other = 2, Nation = 2.4),
-                    guide = "none") +
-  scale_x_continuous(limits = c(36, 72), breaks = seq(40, 60, 5),
-                     name = "Mean SGPc, Grade 4 (2015) → Grade 8 (2019) mathematics") +
-  labs(y = NULL,
-       subtitle = "One row per jurisdiction, others unlabeled. Dot: estimate. Bar: 95% sampling interval.",
-       caption = paste("Source: Betebenner & Braun, Growth from Snapshots (IES / NCES briefing, 2026).",
-                       "Pseudo-cohort; no student records.", NAME_NOTE)) +
-  theme_deck(16) +
-  theme(
-    axis.text.y = element_blank(),
-    axis.ticks.y = element_blank(),
-    panel.grid.major.y = element_blank()
-  )
+plot_dt <- sg[jurisdiction != "Nation"]
+plot_dt[, focus := highlight == "DoWEA"]
+plot_dt[, rank := frank(-mean_sgpc, ties.method = "min")]
+dowea <- plot_dt[focus == TRUE]
+
+p_dots <- sgpc_dots(
+  plot_dt,
+  focus_lab = sprintf("%s  %.1f · rank %d of %d", SHOW_NAME, dowea$mean_sgpc,
+                      dowea$rank, nrow(plot_dt)),
+  ref_lab = "Nation = 50",
+  limits = c(36, 72), breaks = seq(40, 60, 5),
+  subtitle = "One row per jurisdiction, others unlabeled. Dot: estimate. Bar: 95% sampling interval.",
+  caption = paste("Source: Betebenner & Braun, Growth from Snapshots (IES / NCES briefing, 2026).",
+                  "Pseudo-cohort; no student records.", NAME_NOTE)
+)
 
 save_svg(p_dots, "Figures/sgpc/dodea_highlighted_dots.svg", 12, 6.6)
+
+## TIMSS: the United States among other education systems (others coded)
+tm <- fread("data/timss_sgpc_g4_2015_g8_2019.csv")
+tm[, focus := jurisdiction == "United States"]
+us <- tm[focus == TRUE]
+
+p_timss <- sgpc_dots(
+  tm,
+  focus_lab = sprintf("United States  %.1f · %s", us$mean_sgpc, us$bucket),
+  ref_lab = "International peers = 50",
+  limits = c(28, 72), breaks = seq(30, 70, 10),
+  subtitle = "One row per education system, others unlabeled. Dot: estimate. Bar: 95% sampling interval.",
+  caption = paste("Source: SGPc analysis of TIMSS 2015 Grade 4 and 2019 Grade 8 mathematics (IEA).",
+                  "Pseudo-cohort; no student records. Benchmarking participants excluded.")
+)
+
+save_svg(p_timss, "Figures/sgpc/timss_us_highlighted_dots.svg", 12, 5.2)
 
 ## Status vs growth quadrant
 quad <- merge(sg, st, by = "jurisdiction", all.x = TRUE)

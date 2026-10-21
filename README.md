@@ -10,7 +10,7 @@ The deck reuses the New Hampshire TAC pipeline (NCIEA theme, figure lightbox,
 R-to-SVG figures, self-contained `docs/index.html`) in a form suited to a
 non-technical leadership audience.
 
-## The argument (38 slides, about 45 minutes)
+## The argument (39 slides, about 45 minutes)
 
 1. **What student growth is about.** One animated scene defines the two
    terms as a pair. *Status* is what students know and can do at a fixed
@@ -23,7 +23,10 @@ non-technical leadership audience.
    is it enough (percentile growth trajectories)?
 4. **DoWEA status and growth.** NAEP 2024 achievement, the 2017–2024 trend,
    and DoWEA's mean SGPc of 54.1 (seventh of 52) from the Betebenner & Braun
-   NAEP cohort-growth work.
+   NAEP cohort-growth work. One level up, the same cohort design on TIMSS
+   places U.S. growth (47.4) in the typical range among education systems.
+   A four-rung ladder (international, national, consortium, unique) says
+   what each kind of assessment can compare.
 5. **Growth for process management.** Illustrative charts (public demo
    data, Regions A–C) showing how a system finds pockets of strength and
    weakness.
@@ -53,7 +56,8 @@ regions.
 ```
 data/naep_dowea.csv                    ─► R/01_naep_figures.R     ─► Figures/naep/*.svg
 data/naep_sgpc_g4_2015_g8_2019.csv     ─► R/02_sgpc_figures.R     ─► Figures/sgpc/*.svg
-data/naep_g4_math_2015.csv             ─┘
+data/naep_g4_math_2015.csv             ─┤
+data/timss_sgpc_g4_2015_g8_2019.csv    ─┘   (written by R/00_extract_timss.R)
 SGPdata::sgpData_LONG (public demo)    ─► R/03_illustrative_growth.R ─► Figures/process/*.svg
                                          R/04_concept_figures.R  ─► Figures/concept/*.svg
                                                                     + assets/img/qr_code.png
@@ -91,11 +95,24 @@ or `make` / `make figures` / `make render`.
   another jurisdiction. Exact positions on the status axis are public NAEP
   values, so an unlabeled point can still be matched to a state by anyone
   who looks up the 2015 averages.
+- **TIMSS mean SGPc** (Grade 4, 2015 → Grade 8, 2019 mathematics) for the
+  United States and 32 other education systems. `R/00_extract_timss.R`
+  reads the committed, jurisdiction-level extract from the SGPc TIMSS app
+  (`SGPc-ai-apps/apps/timss/data/timss-xsec-app-extract.v0.json`, checked
+  against its SHA-256; override the path with `TIMSS_EXTRACT`). It keeps the
+  app's defaults: the `cohort` arm and systems in the comparison pool, with
+  benchmarking participants and excluded systems dropped. The United States
+  is **47.4** (SE 2.0; 95% interval 43.5–51.3; outer band 37.3–56.9;
+  *typical*), relative to international academic peers. The extract's
+  ranks count benchmarking participants, so the slide reports the growth
+  group, not a rank. Other systems are coded `C01`–`C32`; the named copy is
+  in `data/private/`. The NAEP and TIMSS numbers use different tests and
+  different peers and do not combine.
 
 **Publishing.** GitHub Pages serves `docs/` from `main`; each render
 rewrites `docs/index.html` and `docs/.nojekyll`. To update the live deck,
 render, then commit and push `docs/`. The page is public, including the
-DoWEA SGPc figures.
+DoWEA and U.S. TIMSS SGPc figures.
 
 ## Files
 
@@ -103,8 +120,9 @@ DoWEA SGPc figures.
 DoWEA_Student_Growth.qmd   deck source
 R/00_helpers.R             palette and SVG writer
 R/00_anonymize_jurisdictions.R  data/private/ → anonymized public CSVs (run by hand)
+R/00_extract_timss.R       SGPc TIMSS app extract → TIMSS CSVs (run by hand)
 R/01_naep_figures.R        NAEP achievement charts
-R/02_sgpc_figures.R        DoWEA-highlighted SGPc charts (others unlabeled)
+R/02_sgpc_figures.R        DoWEA (NAEP) and U.S. (TIMSS) SGPc charts, others unlabeled
 R/03_illustrative_growth.R SGPdata demo → process-management charts
 R/04_concept_figures.R     height chart, high jump, fan, quadrant, QR
 styles/                    reveal.js theme, figure lightbox, D3 scenes
