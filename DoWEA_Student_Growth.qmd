@@ -478,6 +478,15 @@ Other jurisdictions are deliberately unlabeled. The range runs from about 43 to 
 :::
 
 
+## High status and high growth
+
+![](Figures/sgpc/status_vs_growth.svg){fig-alt="Scatter of 2015 Grade 4 NAEP mathematics status against mean SGPc for unlabeled jurisdictions, with DoWEA labeled in the high-status high-growth quadrant."}
+
+::: {.notes}
+This is the quadrant they care about. Upper right: high status and high growth. Lower right: high status but below-typical growth — high achievement can hide slow learning. Upper left: lower status but strong growth. DoWEA is high on both. Potential good news — say "potential." Composition change, mobility, and recovery error all remain.
+:::
+
+
 ## One level up: the United States internationally
 
 ![](Figures/sgpc/timss_us_highlighted_dots.svg){.r-stretch fig-alt="Dot plot of mean SGPc for 33 education systems in TIMSS, Grade 4 2015 to Grade 8 2019 mathematics. Only the United States is labeled; it sits in the typical group near the international middle."}
@@ -492,15 +501,6 @@ Same method, same cohort design — Grade 4 in 2015 to Grade 8 in 2019, mathemat
 The United States sits at 47.4, with a sampling interval of 43.5 to 51.3 that includes 50. That is typical growth: U.S. students progressed about as their international academic peers did. By point estimate it is 23rd of 33, but rank is not the point.
 
 Expect the question "so DoWEA is above a nation that is below the world?" Do not chain the numbers. NAEP compares DoWEA with U.S. peers; TIMSS compares the United States with international peers. Different tests, different peers. Each answers the same question at its own level.
-:::
-
-
-## High status and high growth
-
-![](Figures/sgpc/status_vs_growth.svg){fig-alt="Scatter of 2015 Grade 4 NAEP mathematics status against mean SGPc for unlabeled jurisdictions, with DoWEA labeled in the high-status high-growth quadrant."}
-
-::: {.notes}
-This is the quadrant they care about. Upper right: high status and high growth. Lower right: high status but below-typical growth — high achievement can hide slow learning. Upper left: lower status but strong growth. DoWEA is high on both. Potential good news — say "potential." Composition change, mobility, and recovery error all remain.
 :::
 
 
@@ -540,7 +540,7 @@ DoWEA's CCRS summative assessments are the right instrument **inside** the syste
 :::
 
 ::: {.notes}
-The last two slides walked up the top two rungs: NAEP placed DoWEA among U.S. jurisdictions; TIMSS placed the United States among countries. Greater standardization leads to greater generalizability. Do not apologize for uniqueness. Just be precise about what each assessment can say: you cannot compare a unique test with a state that does not take it. If they want school-level growth, that lives on the CCRS / longitudinal side, not on NAEP.
+We have just walked up the top two rungs: the NAEP slides placed DoWEA among U.S. jurisdictions; the TIMSS slide placed the United States among countries. Greater standardization leads to greater generalizability. Do not apologize for uniqueness. Just be precise about what each assessment can say: you cannot compare a unique test with a state that does not take it. If they want school-level growth, that lives on the CCRS / longitudinal side, not on NAEP.
 :::
 
 
