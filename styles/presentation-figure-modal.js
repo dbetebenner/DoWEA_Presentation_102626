@@ -116,8 +116,21 @@
     // fig-alt text in aria-label rather than alt.
     var FIGURE_SELECTOR = '.reveal .slides img:not(.no-modal)';
 
+    // Images inside links keep their link behaviour.
+    function figureImages() {
+      return Array.prototype.filter.call(
+        document.querySelectorAll(FIGURE_SELECTOR),
+        function (img) { return !img.closest('a'); }
+      );
+    }
+
     function describe(img) {
       return img.getAttribute('alt') || img.getAttribute('aria-label') || '';
+    }
+
+    // Reveal lazy-loads images through data-src until their slide is near.
+    function sourceOf(img) {
+      return img.currentSrc || img.getAttribute('src') || img.getAttribute('data-src') || '';
     }
 
     function captionFor(img) {
@@ -130,7 +143,7 @@
       return heading ? heading.textContent : '';
     }
 
-    document.querySelectorAll(FIGURE_SELECTOR).forEach(function (img) {
+    figureImages().forEach(function (img) {
       img.style.cursor = 'pointer';
       img.setAttribute('tabindex', '0');
       img.setAttribute('role', 'button');
@@ -146,7 +159,7 @@
         e.preventDefault();
         e.stopPropagation();
         lastFocusedImg = this;
-        openModal(this.src, describe(this), captionFor(this));
+        openModal(sourceOf(this), describe(this), captionFor(this));
       });
 
       img.addEventListener('keydown', function (e) {
@@ -154,7 +167,7 @@
           e.preventDefault();
           e.stopPropagation();
           lastFocusedImg = this;
-          openModal(this.src, describe(this), captionFor(this));
+          openModal(sourceOf(this), describe(this), captionFor(this));
         }
       });
     });
@@ -181,7 +194,7 @@
       trapFocus(e);
     }, true);
 
-    var figureCount = document.querySelectorAll(FIGURE_SELECTOR).length;
+    var figureCount = figureImages().length;
     console.log('Presentation figure modal: ' + figureCount + ' figure(s) found');
   }
 
