@@ -33,8 +33,15 @@ non-technical leadership audience.
 
 ## Present it
 
-Open the live deck, or **`docs/index.html`** locally in any browser
-(self-contained, works offline).
+Open the live deck, or **`docs/index.html`** locally in any browser.
+
+**Offline copy.** `docs/DoWEA_Presentation_Betebenner_102626.html` is the
+same deck under a shareable name (about 7 MB), rewritten by every render and
+downloadable from the live site at
+`dbetebenner.github.io/DoWEA_Presentation_102626/DoWEA_Presentation_Betebenner_102626.html`.
+It makes no network requests: figures, d3, scripts and fonts are all
+embedded, and it opens by double-click without a web server. Speaker view
+(`S`) opens a popup, which some browsers ask permission for.
 
 - **`S`** — speaker view (per-slide notes + timer)
 - **`F`** — fullscreen · **`O`** — overview · arrows / space to advance
@@ -114,6 +121,15 @@ rewrites `docs/index.html` and `docs/.nojekyll`. To update the live deck,
 render, then commit and push `docs/`. The page is public, including the
 DoWEA and U.S. TIMSS SGPc figures.
 
+**Fonts.** Headings use Josefin Sans; the D3 scene labels use Noto Sans;
+body text is Reveal's built-in Source Sans Pro. The deck does not load
+Google Fonts, because Quarto embeds whatever a remote stylesheet returns at
+render time. `styles/fonts.css` declares Latin-subset woff2 files in
+`assets/fonts/`, built by `tools/subset_fonts.py` (instructions in its
+header; all fonts are SIL Open Font License 1.1). Re-run it only if the
+deck starts using new weights or characters outside Latin-1 and common
+punctuation.
+
 ## Files
 
 ```
@@ -125,11 +141,13 @@ R/01_naep_figures.R        NAEP achievement charts
 R/02_sgpc_figures.R        DoWEA (NAEP) and U.S. (TIMSS) SGPc charts, others unlabeled
 R/03_illustrative_growth.R SGPdata demo → process-management charts
 R/04_concept_figures.R     height chart, high jump, fan, quadrant, QR
-styles/                    reveal.js theme, figure lightbox, D3 scenes
-assets/                    fonts, images, vendored d3 v7
+styles/                    reveal.js theme, fonts.css, figure lightbox, D3 scenes
+assets/                    subset woff2 fonts, images, vendored d3 v7
+tools/subset_fonts.py      builds assets/fonts/*.woff2 (run by hand)
 data/                      committed public CSVs (named copies in data/private/, gitignored)
 summary/illustrative.rds   aggregates computed from the public SGPdata demo
 docs/index.html            rendered deck (served by GitHub Pages)
+docs/DoWEA_Presentation_Betebenner_102626.html  identical offline copy for sharing
 ```
 
 ## Requirements

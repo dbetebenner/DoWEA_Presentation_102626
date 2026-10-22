@@ -7,6 +7,7 @@
 
 QMD      := DoWEA_Student_Growth.qmd
 HTML     := docs/index.html
+OFFLINE  := docs/DoWEA_Presentation_Betebenner_102626.html
 
 .PHONY: all figures render clean
 
@@ -24,8 +25,9 @@ render: figures
 	mv -f index.html docs/index.html
 	rm -rf index_files
 	touch docs/.nojekyll
+	cp $(HTML) $(OFFLINE)
 
 clean:
-	rm -f $(HTML) index.html
+	rm -f $(HTML) $(OFFLINE) index.html
 	rm -rf .quarto index_files index_cache \
 	       DoWEA_Student_Growth_files DoWEA_Student_Growth_cache

@@ -11,6 +11,7 @@ set -euo pipefail
 cd "$(dirname "$0")"
 
 MODE="${1:-all}"
+OFFLINE_NAME="DoWEA_Presentation_Betebenner_102626.html"
 
 run_figures() {
   echo "==> [1/4] NAEP achievement figures"
@@ -30,7 +31,8 @@ run_render() {
   mv -f index.html docs/index.html
   rm -rf index_files
   touch docs/.nojekyll
-  echo "==> Done: docs/index.html"
+  cp docs/index.html "docs/${OFFLINE_NAME}"
+  echo "==> Done: docs/index.html (offline copy: docs/${OFFLINE_NAME})"
 }
 
 case "$MODE" in

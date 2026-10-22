@@ -1,0 +1,13 @@
+/* Latin subsets built by tools/subset_fonts.py (SIL Open Font License 1.1).
+   Local files rather than Google Fonts so the embedded deck works offline. */
+
+@font-face { font-family: "Josefin Sans"; font-style: normal; font-weight: 300; font-display: swap; src: url("../assets/fonts/JosefinSans-300.woff2") format("woff2"); }
+@font-face { font-family: "Josefin Sans"; font-style: normal; font-weight: 400; font-display: swap; src: url("../assets/fonts/JosefinSans-400.woff2") format("woff2"); }
+@font-face { font-family: "Josefin Sans"; font-style: normal; font-weight: 500; font-display: swap; src: url("../assets/fonts/JosefinSans-500.woff2") format("woff2"); }
+@font-face { font-family: "Josefin Sans"; font-style: normal; font-weight: 600; font-display: swap; src: url("../assets/fonts/JosefinSans-600.woff2") format("woff2"); }
+@font-face { font-family: "Josefin Sans"; font-style: normal; font-weight: 700; font-display: swap; src: url("../assets/fonts/JosefinSans-700.woff2") format("woff2"); }
+
+@font-face { font-family: "Noto Sans"; font-style: normal; font-weight: 400; font-display: swap; src: url("../assets/fonts/NotoSans-400.woff2") format("woff2"); }
+@font-face { font-family: "Noto Sans"; font-style: normal; font-weight: 600; font-display: swap; src: url("../assets/fonts/NotoSans-600.woff2") format("woff2"); }
+
+@font-face { font-family: "Noto Sans Mono"; font-style: normal; font-weight: 400; font-display: swap; src: url("../assets/fonts/NotoSansMono-400.woff2") format("woff2"); }

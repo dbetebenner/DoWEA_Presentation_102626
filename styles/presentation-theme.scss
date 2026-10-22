@@ -29,8 +29,7 @@ $presentation-heading-font-weight: 600;
 
 /*-- scss:rules --*/
 
-// ── Font loading ────────────────────────────────────────────────
-@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@200;300;400;500;600;700&family=Noto+Sans:wdth,wght@100..125,300..800&family=Noto+Sans+Mono:wght@400;500;700&display=swap');
+// Fonts are declared in styles/fonts.css (local files, embedded at render).
 
 // ── CSS custom properties (semantic tokens) ─────────────────────
 :root {
