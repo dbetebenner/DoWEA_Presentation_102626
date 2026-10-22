@@ -112,7 +112,25 @@
       }
     }
 
-    document.querySelectorAll('.reveal figure img').forEach(function (img) {
+    // Uncaptioned Quarto images render as bare <img> (no <figure>), with the
+    // fig-alt text in aria-label rather than alt.
+    var FIGURE_SELECTOR = '.reveal .slides img:not(.no-modal)';
+
+    function describe(img) {
+      return img.getAttribute('alt') || img.getAttribute('aria-label') || '';
+    }
+
+    function captionFor(img) {
+      var figure = img.closest('figure');
+      if (figure && figure.querySelector('figcaption')) {
+        return figure.querySelector('figcaption').textContent;
+      }
+      var slide = img.closest('section');
+      var heading = slide && slide.querySelector('h1, h2, h3');
+      return heading ? heading.textContent : '';
+    }
+
+    document.querySelectorAll(FIGURE_SELECTOR).forEach(function (img) {
       img.style.cursor = 'pointer';
       img.setAttribute('tabindex', '0');
       img.setAttribute('role', 'button');
@@ -128,22 +146,15 @@
         e.preventDefault();
         e.stopPropagation();
         lastFocusedImg = this;
-        var figure = this.closest('figure');
-        var caption = figure && figure.querySelector('figcaption')
-          ? figure.querySelector('figcaption').textContent
-          : '';
-        openModal(this.src, this.alt, caption);
+        openModal(this.src, describe(this), captionFor(this));
       });
 
       img.addEventListener('keydown', function (e) {
         if (e.key === 'Enter' || e.key === ' ') {
           e.preventDefault();
+          e.stopPropagation();
           lastFocusedImg = this;
-          var figure = this.closest('figure');
-          var caption = figure && figure.querySelector('figcaption')
-            ? figure.querySelector('figcaption').textContent
-            : '';
-          openModal(this.src, this.alt, caption);
+          openModal(this.src, describe(this), captionFor(this));
         }
       });
     });
@@ -170,7 +181,7 @@
       trapFocus(e);
     }, true);
 
-    var figureCount = document.querySelectorAll('.reveal figure img').length;
+    var figureCount = document.querySelectorAll(FIGURE_SELECTOR).length;
     console.log('Presentation figure modal: ' + figureCount + ' figure(s) found');
   }
 
