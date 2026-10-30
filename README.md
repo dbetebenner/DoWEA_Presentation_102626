@@ -1,5 +1,7 @@
 # Student Growth: The Pulse of the Education System
 
+Part of Damian Betebenner's talks: <https://dbetebenner.github.io/talks/>
+
 A reveal.js (Quarto) presentation for the **DoWEA Fall Leadership Meeting**,
 executive learning session on growth models, **October 26–30, 2026**.
 
